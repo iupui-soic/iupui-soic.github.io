@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperAssist - Transform Your Mental Health Supervision</title>
+    <meta name="description" content="Revolutionary digital supervision tools for mental health professionals. Track goals, generate reports, and enhance supervision experiences with SuperAssist.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #f0f8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: #f8faff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .benefit-icon {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .benefit-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Social Proof */
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8faff, #e8f4f8);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            color: #667eea;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .testimonial-role {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea10, #764ba210);
+            border: 2px solid #667eea;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #555;
+            padding-top: 30px;
+            text-align: center;
+            color: #999;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefit-item {
+                text-align: center;
+                flex-direction: column;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-card, .benefit-item, .testimonial {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="header">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Transform Mental Health Supervision</h1>
+                <p class="hero-subtitle">Streamline your supervision process with powerful digital tools designed specifically for mental health professionals. Track goals, generate insights, and enhance clinical outcomes.</p>
+                
+                <div class="cta-buttons">
+                    <a href="#trial" class="btn btn-primary">🚀 Join Research Trial</a>
+                    <a href="#demo" class="btn btn-secondary">📱 See Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Powerful Features for Modern Supervision</h2>
+            <p class="section-subtitle">Everything you need to conduct effective, evidence-based supervision sessions</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🎯</span>
+                    <h3 class="feature-title">Smart Goal Tracking</h3>
+                    <p class="feature-description">Set, monitor, and analyze client goals with intelligent progress tracking and automated insights.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">📊</span>
+                    <h3 class="feature-title">Dynamic Reports</h3>
+                    <p class="feature-description">Generate comprehensive PDF reports automatically. Track trends in job well-being and supervision effectiveness.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🔒</span>
+                    <h3 class="feature-title">HIPAA-Conscious Security</h3>
+                    <p class="feature-description">Built with healthcare privacy in mind. Role-based access ensures data security and compliance.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">📱</span>
+                    <h3 class="feature-title">Cross-Platform Access</h3>
+                    <p class="feature-description">Seamless experience across iOS and Android devices with real-time cloud synchronization.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🤝</span>
+                    <h3 class="feature-title">Collaborative Workflows</h3>
+                    <p class="feature-description">Connect providers and supervisors with structured supervision agendas and scheduling tools.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">📈</span>
+                    <h3 class="feature-title">Professional Development</h3>
+                    <p class="feature-description">Track growth over time with comprehensive assessments and personalized development planning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Built for Your Role</h2>
+            <p class="section-subtitle">Tailored experiences for both mental health providers and clinical supervisors</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">👩‍⚕️</div>
+                    <div class="benefit-content">
+                        <h3>For Mental Health Providers</h3>
+                        <p>Streamline client documentation, track personal development goals, and prepare comprehensive supervision agendas. Focus more on client care, less on paperwork.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">👨‍🏫</div>
+                    <div class="benefit-content">
+                        <h3>For Clinical Supervisors</h3>
+                        <p>Monitor multiple supervisees efficiently, access real-time progress data, and provide targeted guidance with data-driven insights and analytics.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🏢</div>
+                    <div class="benefit-content">
+                        <h3>For Mental Health Agencies</h3>
+                        <p>Standardize supervision processes, ensure compliance documentation, and improve outcomes with evidence-based digital workflows.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">📚</div>
+                    <div class="benefit-content">
+                        <h3>For Training Programs</h3>
+                        <p>Enhance clinical training with structured supervision tools, comprehensive progress tracking, and detailed performance analytics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <h2 class="section-title">Making an Impact</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Mental Health Professionals</p>
+                </div>
+                <div class="stat-item">
+                    <h3>85%</h3>
+                    <p>Improvement in Supervision Efficiency</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10,000+</h3>
+                    <p>Client Goals Tracked</p>
+                </div>
+                <div class="stat-item">
+                    <h3>99.9%</h3>
+                    <p>Data Security Uptime</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Mental Health Professionals Say</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">SuperAssist has completely transformed how I approach supervision. The goal tracking and automatic report generation save me hours every week.</p>
+                    <div class="testimonial-author">Dr. Sarah Martinez</div>
+                    <div class="testimonial-role">Clinical Supervisor, Community Mental Health Center</div>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">As a new therapist, SuperAssist helps me stay organized and prepare thoroughly for supervision. The professional development tracking is invaluable.</p>
+                    <div class="testimonial-author">Michael Chen, LCSW</div>
+                    <div class="testimonial-role">Mental Health Provider</div>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">The security features give us confidence to use this with our clients. It's HIPAA-conscious design makes compliance straightforward.</p>
+                    <div class="testimonial-author">Jennifer Walsh, PhD</div>
+                    <div class="testimonial-role">Director of Clinical Services</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="trial">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="section-title">Ready to Transform Your Practice?</h2>
+                <p class="section-subtitle">Join our exclusive research trial and be among the first to experience the future of mental health supervision</p>
+                
+                <div class="highlight-box">
+                    <h3>🔬 Research Trial Benefits</h3>
+                    <ul style="text-align: left; margin: 20px 0; padding-left: 20px;">
+                        <li>Free access to SuperAssist v59</li>
+                        <li>Direct input on future features</li>
+                        <li>Priority support and training</li>
+                        <li>Contribute to mental health research</li>
+                        <li>Early access to new updates</li>
+                    </ul>
+                </div>
+                
+                <div class="cta-buttons">
+                    <a href="mailto:research@superassist.app?subject=Research Trial Interest" class="btn btn-primary">Apply for Research Trial</a>
+                    <a href="mailto:demo@superassist.app?subject=Demo Request" class="btn btn-secondary">Request Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>SuperAssist</h4>
+                    <p style="color: #ccc; margin-bottom: 20px;">Empowering mental health professionals with innovative supervision tools.</p>
+                    <p style="color: #999; font-size: 0.9rem;">Version 59 - Research Trial Available</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#trial">Research Trial</a>
+                    <a href="#demo">Request Demo</a>
+                    <a href="support.html">Support</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>For Professionals</h4>
+                    <a href="#">Mental Health Providers</a>
+                    <a href="#">Clinical Supervisors</a>
+                    <a href="#">Training Programs</a>
+                    <a href="#">Healthcare Agencies</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <a href="mailto:research@superassist.app">Research Trial</a>
+                    <a href="mailto:support@superassist.app">Support</a>
+                    <a href="mailto:demo@superassist.app">Request Demo</a>
+                    <a href="mailto:partnerships@superassist.app">Partnerships</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 SuperAssist. All rights reserved. | Privacy Policy | Terms of Service</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">
+                    For emergency mental health situations, please contact your local crisis hotline or emergency services.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
