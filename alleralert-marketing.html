@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AllerAlert - Proactive Asthma Management</title>
+    <meta name="description" content="AllerAlert is a mobile health app that empowers asthma patients with real-time environmental monitoring, intelligent symptom tracking, and personalized insights.">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0D9488;
+            --primary-dark: #0F766E;
+            --primary-light: #5EEAD4;
+            --accent: #F59E0B;
+            --accent-light: #FDE68A;
+            --bg-light: #F0FDFA;
+            --bg-white: #FFFFFF;
+            --text-dark: #134E4A;
+            --text-body: #475569;
+            --text-light: #94A3B8;
+            --border: #E2E8F0;
+            --gradient-1: linear-gradient(135deg, #0D9488 0%, #0F766E 50%, #115E59 100%);
+            --gradient-2: linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-white);
+            color: var(--text-body);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-1);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 80%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(94, 234, 212, 0.15) 0%, transparent 60%);
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 60%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+            animation: float 12s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(2deg); }
+            66% { transform: translate(-20px, 20px) rotate(-2deg); }
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-logo-icon {
+            width: 44px;
+            height: 44px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .nav-logo-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .hero-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-text h1 span {
+            display: block;
+            background: linear-gradient(90deg, var(--accent-light), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-dark);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .phone-mockup {
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.3);
+            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+        }
+
+        .phone-screen {
+            background: linear-gradient(180deg, var(--bg-light) 0%, white 100%);
+            border-radius: 32px;
+            overflow: hidden;
+            aspect-ratio: 9/19;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .phone-header {
+            background: var(--primary);
+            padding: 2rem 1.5rem 1.5rem;
+            color: white;
+        }
+
+        .phone-header h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .phone-header p {
+            font-size: 0.8rem;
+            opacity: 0.85;
+        }
+
+        .phone-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            padding: 1rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .stat-card .icon {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-card .value {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .stat-card .label {
+            font-size: 0.7rem;
+            color: var(--text-light);
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: white;
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        .floating-badge:nth-child(1) {
+            top: 10%;
+            right: -20%;
+            animation-delay: 0s;
+        }
+
+        .floating-badge:nth-child(2) {
+            bottom: 20%;
+            left: -15%;
+            animation-delay: 1s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--gradient-2);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-body);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid rgba(13, 148, 136, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(13, 148, 136, 0.1);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #CCFBF1 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--text-body);
+            font-size: 0.95rem;
+        }
+
+        .feature-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+        }
+
+        .feature-tag {
+            background: var(--bg-light);
+            color: var(--primary-dark);
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step::after {
+            content: '→';
+            position: absolute;
+            right: -1.5rem;
+            top: 30px;
+            color: var(--primary-light);
+            font-size: 1.5rem;
+        }
+
+        .step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0 auto 1rem;
+        }
+
+        .step h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            padding: 4rem 2rem;
+            background: var(--text-dark);
+            color: white;
+        }
+
+        .tech-stack .section-header h2 {
+            color: white;
+        }
+
+        .tech-stack .section-header p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .tech-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tech-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.25rem 2rem;
+            text-align: center;
+            min-width: 140px;
+        }
+
+        .tech-item .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-item .name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .tech-item .purpose {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 2rem;
+            background: var(--gradient-2);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            color: var(--text-body);
+            margin-bottom: 2rem;
+        }
+
+        .cta .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+        }
+
+        .store-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .store-badge {
+            height: 50px;
+            border-radius: 8px;
+            background: #000;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .store-badge:hover {
+            transform: scale(1.05);
+        }
+
+        .store-badge .icon {
+            font-size: 1.5rem;
+        }
+
+        .store-badge .text {
+            text-align: left;
+            font-size: 0.65rem;
+            line-height: 1.2;
+        }
+
+        .store-badge .text span {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .hero-visual {
+                display: none;
+            }
+
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .step::after {
+                display: none;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <nav class="nav">
+            <div class="nav-logo">
+                <div class="nav-logo-icon">🫁</div>
+                <span class="nav-logo-text">AllerAlert</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="alleralert-support.html">Support</a></li>
+                <li><a href="alleralert-privacy-policy.html">Privacy</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero-content">
+            <div class="hero-inner">
+                <div class="hero-text">
+                    <h1>
+                        Breathe Easier with
+                        <span>Proactive Asthma Care</span>
+                    </h1>
+                    <p>AllerAlert connects real-time environmental monitoring with intelligent symptom tracking, giving you personalized insights to manage your asthma proactively.</p>
+                    <div class="hero-buttons">
+                        <a href="#download" class="btn btn-primary">
+                            📱 Download Now
+                        </a>
+                        <a href="#features" class="btn btn-secondary">
+                            Learn More →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="floating-badge">
+                        <span>🌡️</span> Real-time AQI Alerts
+                    </div>
+                    <div class="floating-badge">
+                        <span>🎤</span> Voice Symptom Logging
+                    </div>
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="phone-header">
+                                <h3>Good Morning, Sarah</h3>
+                                <p>Air quality is moderate today</p>
+                            </div>
+                            <div class="phone-stats">
+                                <div class="stat-card">
+                                    <div class="icon">🌬️</div>
+                                    <div class="value">42</div>
+                                    <div class="label">AQI Index</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="icon">💨</div>
+                                    <div class="value">8 µg/m³</div>
+                                    <div class="label">PM2.5</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="icon">🌡️</div>
+                                    <div class="value">72°F</div>
+                                    <div class="label">Temperature</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="icon">💧</div>
+                                    <div class="value">45%</div>
+                                    <div class="label">Humidity</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Powerful Features for Better Breathing</h2>
+            <p>Everything you need to understand your environment and manage your asthma more effectively.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌬️</div>
+                <h3>Real-Time Environmental Monitoring</h3>
+                <p>Connect to Atmotube PRO via Bluetooth to continuously track VOCs, PM1, PM2.5, PM10, temperature, humidity, and atmospheric pressure.</p>
+                <div class="feature-tags">
+                    <span class="feature-tag">BLE Connection</span>
+                    <span class="feature-tag">Continuous Tracking</span>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🗣️</div>
+                <h3>Voice-Enabled Symptom Tracking</h3>
+                <p>Log symptoms using natural voice input. Our NLP-powered system automatically extracts symptoms, triggers, and medications from your speech.</p>
+                <div class="feature-tags">
+                    <span class="feature-tag">Natural Language</span>
+                    <span class="feature-tag">AI-Powered</span>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Advanced Data Analysis</h3>
+                <p>DBSCAN clustering algorithms identify environmental risk zones, trigger patterns, and air quality anomalies to help you avoid problem areas.</p>
+                <div class="feature-tags">
+                    <span class="feature-tag">Pattern Detection</span>
+                    <span class="feature-tag">Risk Zones</span>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌦️</div>
+                <h3>Weather Forecast Integration</h3>
+                <p>Hyper-local weather forecasts from Tomorrow.io help you correlate weather conditions with symptom severity and plan ahead.</p>
+                <div class="feature-tags">
+                    <span class="feature-tag">Hyper-Local</span>
+                    <span class="feature-tag">Correlation Analysis</span>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Secure Authentication & Storage</h3>
+                <p>Your health data is protected with Firebase Authentication and encrypted Cloud Firestore storage. No PHI stored outside secure infrastructure.</p>
+                <div class="feature-tags">
+                    <span class="feature-tag">Encrypted</span>
+                    <span class="feature-tag">HIPAA-Conscious</span>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>Personalized Insights</h3>
+                <p>Interactive symptom diary with trend visualizations and environmental history. Discover your unique trigger patterns over time.</p>
+                <div class="feature-tags">
+                    <span class="feature-tag">Trends</span>
+                    <span class="feature-tag">Visualizations</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-header">
+            <h2>How AllerAlert Works</h2>
+            <p>Start managing your asthma proactively in four simple steps.</p>
+        </div>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h4>Connect Device</h4>
+                <p>Pair your Atmotube PRO via Bluetooth for real-time environmental data.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h4>Log Symptoms</h4>
+                <p>Use voice or manual input to track how you're feeling each day.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h4>Analyze Patterns</h4>
+                <p>Our AI identifies correlations between environment and your symptoms.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h4>Take Action</h4>
+                <p>Receive personalized alerts and insights to avoid triggers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-stack">
+        <div class="section-header">
+            <h2>Built with Modern Technology</h2>
+            <p>Reliable, secure, and cutting-edge tech powers AllerAlert.</p>
+        </div>
+
+        <div class="tech-grid">
+            <div class="tech-item">
+                <div class="icon">📱</div>
+                <div class="name">Flutter</div>
+                <div class="purpose">Cross-platform UI</div>
+            </div>
+            <div class="tech-item">
+                <div class="icon">🔐</div>
+                <div class="name">Firebase Auth</div>
+                <div class="purpose">Secure Login</div>
+            </div>
+            <div class="tech-item">
+                <div class="icon">☁️</div>
+                <div class="name">Firestore</div>
+                <div class="purpose">Cloud Database</div>
+            </div>
+            <div class="tech-item">
+                <div class="icon">📡</div>
+                <div class="name">BLE</div>
+                <div class="purpose">Device Connection</div>
+            </div>
+            <div class="tech-item">
+                <div class="icon">🤖</div>
+                <div class="name">Hugging Face</div>
+                <div class="purpose">NLP Processing</div>
+            </div>
+            <div class="tech-item">
+                <div class="icon">🌦️</div>
+                <div class="name">Tomorrow.io</div>
+                <div class="purpose">Weather Data</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="download">
+        <div class="cta-content">
+            <h2>Start Your Journey to Better Breathing</h2>
+            <p>Download AllerAlert today and take control of your asthma management with real-time insights and personalized care.</p>
+            
+            <div class="store-badges">
+                <a href="#" class="store-badge">
+                    <span class="icon">🍎</span>
+                    <div class="text">Download on the<span>App Store</span></div>
+                </a>
+                <a href="#" class="store-badge">
+                    <span class="icon">▶️</span>
+                    <div class="text">Get it on<span>Google Play</span></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>🫁 AllerAlert</h3>
+                <p>A mobile health app for proactive asthma management, connecting real-time environmental monitoring with intelligent symptom tracking.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#download">Download</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="alleralert-support.html">Help Center</a></li>
+                    <li><a href="alleralert-support.html#faq">FAQ</a></li>
+                    <li><a href="alleralert-support.html#contact-form">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="alleralert-privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="alleralert-account-deletion-request.html">Delete Account</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AllerAlert. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
