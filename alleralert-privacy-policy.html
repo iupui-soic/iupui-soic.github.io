@@ -238,7 +238,7 @@
 
     <main class="container">
         <div class="last-updated">
-            <strong>Last Updated:</strong> December 29, 2025
+            <strong>Last Updated:</strong> October 14, 2026
         </div>
 
         <section class="section">
@@ -274,7 +274,10 @@
                 <li>Identify environmental risk zones</li>
             </ul>
 
-            <h3>Voice Data</h3>
+            <h3>Health Data from Apple Health or Health Connect</h3>
+                <p>With your permission, AllerAlert reads the following from Apple Health (iOS) or Health Connect (Android): steps, resting heart rate, heart rate variability, blood oxygen saturation, respiratory rate, and sleep. We read up to 30 days of history when you first connect, and new data afterwards, including in the background while the app is closed. The app stores hourly and daily summaries of these measures in your account to show your health trends alongside your symptoms and air quality. We do not use this data for advertising, and we never share it with third parties except as described under Data Sharing. You can stop this at any time by revoking AllerAlert's access in the Health app or in Health Connect, or by disconnecting health data inside AllerAlert.</p>
+
+                <h3>Voice Data</h3>
             <p>When using voice-enabled symptom tracking, your voice input is processed to extract symptoms, triggers, and medication information. Voice recordings are processed in real-time and are not stored permanently.</p>
         </section>
 
@@ -304,12 +307,24 @@
         </section>
 
         <section class="section">
+                <h2>Data Retention</h2>
+                <p>We keep your data for as long as your AllerAlert account exists. Specifically:</p>
+                <ul>
+                    <li><strong>Account and health data:</strong> symptom entries, medication records, air quality readings, health summaries, and your profile are kept while your account is active so that you can see your history and trends.</li>
+                    <li><strong>Voice recordings:</strong> not stored. Dictation is processed on your device while you speak, and only the resulting text is saved with your diary entry.</li>
+                    <li><strong>Location:</strong> we do not store your position. Location is used at the moment you request a weather forecast or save a diary entry, and only your time zone is kept with the entry.</li>
+                    <li><strong>Crash reports:</strong> technical diagnostics without health data, kept by Firebase Crashlytics for 90 days.</li>
+                </ul>
+                <p>When you delete your account from inside the app (Me &rarr; Delete Account) or through our <a href="alleralert-account-deletion-request.html">account deletion request page</a>, your account and all data linked to it are deleted from our systems within 30 days, including backups. Data that was already de-identified for the research study before your deletion request cannot be linked back to you and may be kept for the period required by the study protocol approved by the Indiana University Institutional Review Board, after which it is destroyed.</p>
+            </section>
+
+            <section class="section">
             <h2>Third-Party Services</h2>
             <p>AllerAlert integrates with the following third-party services:</p>
             <ul>
-                <li><strong>Firebase (Google):</strong> Authentication and data storage</li>
-                <li><strong>Tomorrow.io:</strong> Weather forecast data</li>
-                <li><strong>Hugging Face:</strong> NLP processing for symptom extraction</li>
+                <li><strong>Firebase (Google):</strong> Authentication, data storage, and crash reporting (Crashlytics)</li>
+                <li><strong>Open-Meteo:</strong> Weather forecasts and outdoor air quality, requested for your approximate location without any account information</li>
+                <li><strong>Apple Health and Health Connect:</strong> the source of the health measures described above, read only with your permission</li>
             </ul>
             <p>Each third-party service has its own privacy policy governing the use of your information. We encourage you to review their policies.</p>
         </section>
@@ -331,7 +346,7 @@
             <ul>
                 <li><strong>Access:</strong> Request a copy of your personal data</li>
                 <li><strong>Correction:</strong> Request correction of inaccurate information</li>
-                <li><strong>Deletion:</strong> Request deletion of your account and associated data</li>
+                <li><strong>Deletion:</strong> Delete your account and all associated data from the app (Me &rarr; Delete Account) or through our <a href="alleralert-account-deletion-request.html">account deletion request page</a>; see Data Retention for what happens next</li>
                 <li><strong>Portability:</strong> Request your data in a portable format</li>
                 <li><strong>Withdraw Consent:</strong> Opt out of data collection at any time</li>
             </ul>
