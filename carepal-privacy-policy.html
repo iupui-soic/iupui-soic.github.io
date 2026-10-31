@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - CarePal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #056E55;
+            --primary-dark: #04523F;
+            --primary-light: #7FD1B9;
+            --accent: #F59E0B;
+            --bg-light: #F1F8F5;
+            --bg-white: #FFFFFF;
+            --text-dark: #17352C;
+            --text-body: #475569;
+            --text-light: #94A3B8;
+            --border: #E2E8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-white) 100%);
+            min-height: 100vh;
+            color: var(--text-body);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+            
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .logo-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.02em;
+        }
+
+        .header h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            color: rgba(255,255,255,0.85);
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .last-updated {
+            background: var(--bg-light);
+            border-left: 4px solid var(--primary);
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
+        }
+
+        .section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section h2::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 2px;
+        }
+
+        .section h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+        }
+
+        .section ul {
+            margin: 1rem 0 1rem 1.5rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--bg-light) 0%, #E6F4EF 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(5, 110, 85, 0.2);
+        }
+
+        .highlight-box strong {
+            color: var(--primary-dark);
+        }
+
+        .contact-info {
+            background: var(--text-dark);
+            color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-info a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 640px) {
+            .header {
+                padding: 2rem 1.5rem;
+            }
+            .header h1 {
+                font-size: 1.75rem;
+            }
+            .container {
+                padding: 2rem 1rem;
+            }
+            .section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon"><svg viewBox="0 0 1160 1000" width="34" height="30" aria-hidden="true"><path fill="#056E55" fill-rule="evenodd" d="M135 768 A575 470 0 1 1 333 894 C247 965 127 1005 14 1000 C2 999 -2 988 7 979 C69 925 127 850 135 768 Z M509 271 Q509 249 531 249 H629 Q651 249 651 271 V396 H776 Q798 396 798 418 V516 Q798 538 776 538 H651 V663 Q651 685 629 685 H531 Q509 685 509 663 V538 H384 Q362 538 362 516 V418 Q362 396 384 396 H509 Z"/></svg></div>
+            <span class="logo-text">CarePal</span>
+        </div>
+        <h1>Privacy Policy</h1>
+        <p>How CarePal handles your information</p>
+    </header>
+
+    <main class="container">
+        <div class="last-updated">
+            <strong>Last Updated:</strong> October 31, 2026
+        </div>
+        <section class="section">
+            <h2>Introduction</h2>
+            <p>CarePal ("we," "our," or "us") is a mobile health application that helps people living with cirrhosis and other liver conditions keep track of their care. This Privacy Policy explains what information CarePal collects, how it is used and shared, and the choices you have.</p>
+            <p>By using CarePal, you agree to the collection and use of information as described here. If you do not agree, please do not use the application.</p>
+        </section>
+
+        <section class="section">
+            <h2>Information We Collect</h2>
+            <h3>Account Information</h3>
+            <p>When you sign in with Google, we receive your name, email address, profile photo, and a unique account identifier.</p>
+
+            <h3>Your Health Records</h3>
+            <p>When your account is connected to a health record, CarePal reads your demographics, medications, appointments and visits, lab results and other measurements, diagnoses, reports, and care team details from a health records server. This information is displayed in the app and used to answer your questions to Vik. Records stay on that server, and the app does not save a separate copy of them in your CarePal account. However, Vik's saved replies can include details from your records.</p>
+
+            <h3>Information You Provide</h3>
+            <ul>
+                <li><strong>Survey answers:</strong> your answers to health surveys, including questions about physical function, mood, anxiety, sleep, itching, and pain</li>
+                <li><strong>Chat messages:</strong> the messages you send to Vik and the replies you receive</li>
+                <li><strong>Health readings:</strong> any readings you choose to enter yourself</li>
+                <li><strong>Medication reminders:</strong> the medicine names and times you set, which are stored only on your device</li>
+            </ul>
+
+            <h3>Safety Alerts</h3>
+            <p>CarePal automatically checks chat messages for words that may suggest distress or a crisis. When it finds them, it saves an alert in your account containing the matching words, up to the first 200 characters of your message, the date, and a list of when such words appeared in your chats during the past 30 days. <strong>These alerts are not monitored, and no one is notified in real time.</strong> Do not rely on CarePal in an emergency.</p>
+
+            <h3>Device Verification</h3>
+            <p>CarePal uses Firebase App Check, with Google Play Integrity on Android and Apple DeviceCheck on iOS, to confirm that requests come from a genuine copy of the app.</p>
+
+            <h3>What We Do Not Collect</h3>
+            <p>CarePal does not use advertising, analytics, or tracking tools, and it does not collect your location or access your contacts, camera, or microphone.</p>
+        </section>
+
+        <section class="section">
+            <h2>How We Use Your Information</h2>
+            <p>We use your information to:</p>
+            <ul>
+                <li>Show you your health information, appointments, and medications</li>
+                <li>Send the medication and survey reminders you set up or start</li>
+                <li>Save your chats and in-progress surveys so that you can return to them</li>
+                <li>Answer your questions through Vik</li>
+                <li>Keep the service secure and working correctly</li>
+            </ul>
+            <p>We do not use your information for advertising, and we do not sell it.</p>
+        </section>
+
+        <section class="section">
+            <h2>Vik, Our Automated Assistant</h2>
+            <div class="highlight-box">
+                <strong>Important:</strong> Vik is an automated assistant, not a doctor. To answer you, your messages and related parts of your health records are sent to Groq, a third-party AI service. Do not include information in your messages that you do not want to share with this service.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Data Storage and Security</h2>
+            <ul>
+                <li><strong>Firebase Authentication:</strong> manages your sign-in</li>
+                <li><strong>Cloud Firestore:</strong> stores your chats, surveys, readings, and safety alerts in the United States, in an area of the database restricted to your account</li>
+                <li><strong>In transit:</strong> data sent between the app and our services uses encrypted connections</li>
+                <li><strong>Technical logs:</strong> our server functions keep technical logs in Google Cloud for troubleshooting, and these can include error details</li>
+                <li><strong>On your device:</strong> reminders, in-progress survey answers, and recently viewed account data are kept in the app's private storage and are not separately encrypted by CarePal, so please protect your phone with a passcode</li>
+            </ul>
+            <p>No system is completely secure, and we cannot guarantee absolute security.</p>
+        </section>
+
+        <section class="section">
+            <h2>Data Retention</h2>
+            <p>We keep your chats, surveys, readings, safety alerts, and profile for as long as your CarePal account exists, so that you can return to them.</p>
+            <p>When you ask us to delete your account through our <a href="carepal-account-deletion-request.html">account deletion request page</a>, we delete your account and the data linked to it from our systems within 30 days. Uninstalling the app removes the data stored on your device, but it does not delete your account. Answers that have already been sent to a research study database may be kept as required by that study's approved protocol.</p>
+        </section>
+
+        <section class="section">
+            <h2>Third-Party Services</h2>
+            <p>CarePal relies on the following services to operate:</p>
+            <ul>
+                <li><strong>Google Firebase:</strong> sign-in, data storage, server functions, and device verification</li>
+                <li><strong>Google Sign-In:</strong> signing in to the app</li>
+                <li><strong>Groq:</strong> generating Vik's replies, as described above</li>
+                <li><strong>REDCap, hosted by Indiana University:</strong> survey questions, and survey answers when submission to a study is enabled</li>
+                <li><strong>Apple and Google notification services on your device:</strong> showing your reminders</li>
+            </ul>
+            <p>Each service has its own privacy policy. Educational links in the app open websites, including YouTube, that have their own privacy practices.</p>
+        </section>
+
+        <section class="section">
+            <h2>Data Sharing</h2>
+            <p>We do not sell, trade, or rent your personal information. We share it only as described in this policy and in these circumstances:</p>
+            <ul>
+                <li>With your consent, including the consent you give to take part in a research study</li>
+                <li>To comply with legal requirements or respond to lawful requests</li>
+                <li>To protect the rights, safety, or property of you or others</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Your Rights</h2>
+            <p>You can ask us to:</p>
+            <ul>
+                <li><strong>Access:</strong> give you a copy of your CarePal data</li>
+                <li><strong>Correction:</strong> correct inaccurate information. Corrections to your medical records must be made with your care provider.</li>
+                <li><strong>Deletion:</strong> delete your account through our <a href="carepal-account-deletion-request.html">account deletion request page</a></li>
+            </ul>
+            <p>You can also remove a reminder at any time, and turn off notifications in your device settings.</p>
+        </section>
+
+        <section class="section">
+            <h2>Children's Privacy</h2>
+            <p>CarePal is intended for adults. It is not intended for children under 13, and we do not knowingly collect personal information from them. If you believe a child has provided us with personal information, please contact us.</p>
+        </section>
+
+        <section class="section">
+            <h2>Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time. We will post the new version on this page and update the "Last Updated" date.</p>
+        </section>
+
+        <section class="section">
+            <h2>Contact Us</h2>
+            <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
+            <div class="contact-info">
+                <p><strong>Email:</strong> <a href="mailto:saptpurk@iu.edu">saptpurk@iu.edu</a></p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 CarePal. All rights reserved.</p>
+        <p><a href="carepal-account-deletion-request.html">Delete Account</a></p>
+    </footer>
+
+</body>
+</html>

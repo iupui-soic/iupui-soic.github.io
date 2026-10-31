@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Your Account - CarePal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #056E55;
+            --primary-dark: #04523F;
+            --primary-light: #7FD1B9;
+            --accent: #F59E0B;
+            --danger: #DC2626;
+            --danger-light: #FEE2E2;
+            --bg-light: #F1F8F5;
+            --bg-white: #FFFFFF;
+            --text-dark: #17352C;
+            --text-body: #475569;
+            --text-light: #94A3B8;
+            --border: #E2E8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-white) 100%);
+            min-height: 100vh;
+            color: var(--text-body);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+            
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .logo-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.02em;
+        }
+
+        .header h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            color: rgba(255,255,255,0.85);
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .warning-banner {
+            background: var(--danger-light);
+            border: 1px solid var(--danger);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .warning-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .warning-content h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--danger);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .warning-content p {
+            color: #7F1D1D;
+            font-size: 0.95rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
+        }
+
+        .section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section h2::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 2px;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+        }
+
+        .section ul {
+            margin: 1rem 0 1rem 1.5rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .data-deleted {
+            display: grid;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .data-item {
+            background: #FEF2F2;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-left: 3px solid var(--danger);
+        }
+
+        .data-item span.icon {
+            font-size: 1.25rem;
+        }
+
+        .deletion-form {
+            background: linear-gradient(135deg, var(--bg-light) 0%, #E6F4EF 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(5, 110, 85, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            accent-color: var(--primary);
+        }
+
+        .checkbox-group label {
+            font-size: 0.95rem;
+            color: var(--text-body);
+        }
+
+        .submit-btn {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #B91C1C;
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:disabled {
+            background: var(--text-light);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .alternative-box {
+            background: white;
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .alternative-box h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .alternative-box a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .alternative-box a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .success-message {
+            display: none;
+            background: #E6F4EF;
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-message .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .success-message h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .header {
+                padding: 2rem 1.5rem;
+            }
+            .header h1 {
+                font-size: 1.75rem;
+            }
+            .container {
+                padding: 2rem 1rem;
+            }
+            .section {
+                padding: 1.5rem;
+            }
+            .deletion-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon"><svg viewBox="0 0 1160 1000" width="34" height="30" aria-hidden="true"><path fill="#056E55" fill-rule="evenodd" d="M135 768 A575 470 0 1 1 333 894 C247 965 127 1005 14 1000 C2 999 -2 988 7 979 C69 925 127 850 135 768 Z M509 271 Q509 249 531 249 H629 Q651 249 651 271 V396 H776 Q798 396 798 418 V516 Q798 538 776 538 H651 V663 Q651 685 629 685 H531 Q509 685 509 663 V538 H384 Q362 538 362 516 V418 Q362 396 384 396 H509 Z"/></svg></div>
+            <span class="logo-text">CarePal</span>
+        </div>
+        <h1>Account Deletion Request</h1>
+        <p>Remove your CarePal account and data</p>
+    </header>
+
+    <main class="container">
+        <div class="warning-banner">
+            <span class="warning-icon">⚠️</span>
+            <div class="warning-content">
+                <h3>This action is permanent</h3>
+                <p>Deleting your account permanently removes your CarePal data from our servers and cannot be undone.</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2>What Will Be Deleted</h2>
+            <p>When you request account deletion, the following data will be permanently removed from our systems:</p>
+            <div class="data-deleted">
+                <div class="data-item"><span>Your account and profile information</span></div>
+                <div class="data-item"><span>Your chats with Vik</span></div>
+                <div class="data-item"><span>Your survey answers and in-progress surveys</span></div>
+                <div class="data-item"><span>Health readings you entered yourself</span></div>
+                <div class="data-item"><span>Safety alerts created from your chats</span></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>What Will Not Be Deleted</h2>
+            <ul>
+                <li><strong>Your medical records:</strong> these belong to your care provider and are not changed.</li>
+                <li><strong>Research study answers:</strong> answers already sent to a study database may be kept as required by that study's approved protocol.</li>
+                <li><strong>Data on your phone:</strong> reminders and in-progress answers stay on your device until you uninstall the app.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Request Account Deletion</h2>
+            <p>Fill out this form using the email address you sign in with. It opens an email to our team, which you then need to send. We will process your request within 30 days and confirm by email.</p>
+
+            <div class="deletion-form" id="deletionForm">
+                <form id="deleteForm">
+                    <div class="form-group">
+                        <label for="email">Email address used for your CarePal account *</label>
+                        <input type="email" id="email" required placeholder="your.email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Full name *</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reason">Reason for leaving (optional)</label>
+                        <textarea id="reason"></textarea>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="confirm" required>
+                        <label for="confirm">I understand that this is permanent and cannot be undone.</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="exportData">
+                        <label for="exportData">I would like a copy of my data before it is deleted.</label>
+                    </div>
+                    <button type="submit" class="submit-btn">Create Deletion Email</button>
+                </form>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                <h3>Almost done</h3>
+                <p>Your email app should now be open. Please press send to submit your request. If it did not open, email <a href="mailto:saptpurk@iu.edu">saptpurk@iu.edu</a> with your name and account email.</p>
+            </div>
+        </section>
+
+        <div class="alternative-box">
+            <h3>Need Help Instead?</h3>
+            <p>If you are having problems with the app, we may be able to help.</p>
+            <p><a href="mailto:saptpurk@iu.edu">saptpurk@iu.edu</a></p>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 CarePal. All rights reserved.</p>
+        <p><a href="carepal-privacy-policy.html">Privacy Policy</a></p>
+    </footer>
+    <script>
+        document.getElementById('deleteForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+            const reason = document.getElementById('reason').value;
+            const exportData = document.getElementById('exportData').checked;
+            const subject = encodeURIComponent('Account Deletion Request - CarePal');
+            const body = encodeURIComponent(
+                `Account Deletion Request\n\n` +
+                `Name: ${name}\n` +
+                `Email: ${email}\n` +
+                `Copy of data first: ${exportData ? 'Yes' : 'No'}\n` +
+                `Reason: ${reason || 'Not provided'}\n\n` +
+                `Please delete my CarePal account and the data linked to it.`
+            );
+            window.location.href = `mailto:saptpurk@iu.edu?subject=${subject}&body=${body}`;
+            document.getElementById('deletionForm').style.display = 'none';
+            document.getElementById('successMessage').classList.add('show');
+        });
+    </script>
+</body>
+</html>
