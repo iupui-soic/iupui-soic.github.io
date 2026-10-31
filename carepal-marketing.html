@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - CarePal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #056E55;
+            --primary-dark: #04523F;
+            --primary-light: #7FD1B9;
+            --accent: #F59E0B;
+            --bg-light: #F1F8F5;
+            --bg-white: #FFFFFF;
+            --text-dark: #17352C;
+            --text-body: #475569;
+            --text-light: #94A3B8;
+            --border: #E2E8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-white) 100%);
+            min-height: 100vh;
+            color: var(--text-body);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+            
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .logo-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.02em;
+        }
+
+        .header h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            color: rgba(255,255,255,0.85);
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .last-updated {
+            background: var(--bg-light);
+            border-left: 4px solid var(--primary);
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
+        }
+
+        .section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section h2::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 2px;
+        }
+
+        .section h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+        }
+
+        .section ul {
+            margin: 1rem 0 1rem 1.5rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--bg-light) 0%, #E6F4EF 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(5, 110, 85, 0.2);
+        }
+
+        .highlight-box strong {
+            color: var(--primary-dark);
+        }
+
+        .contact-info {
+            background: var(--text-dark);
+            color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-info a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 640px) {
+            .header {
+                padding: 2rem 1.5rem;
+            }
+            .header h1 {
+                font-size: 1.75rem;
+            }
+            .container {
+                padding: 2rem 1rem;
+            }
+            .section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon"><svg viewBox="0 0 1160 1000" width="34" height="30" aria-hidden="true"><path fill="#056E55" fill-rule="evenodd" d="M135 768 A575 470 0 1 1 333 894 C247 965 127 1005 14 1000 C2 999 -2 988 7 979 C69 925 127 850 135 768 Z M509 271 Q509 249 531 249 H629 Q651 249 651 271 V396 H776 Q798 396 798 418 V516 Q798 538 776 538 H651 V663 Q651 685 629 685 H531 Q509 685 509 663 V538 H384 Q362 538 362 516 V418 Q362 396 384 396 H509 Z"/></svg></div>
+            <span class="logo-text">CarePal</span>
+        </div>
+        <h1>About CarePal</h1>
+        <p>Cirrhosis care at your fingertips</p>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2>Your Liver Care in One Place</h2>
+            <p>CarePal helps people living with cirrhosis and other liver conditions keep track of their care.</p>
+            <ul>
+                <li>See your medications and set daily reminders</li>
+                <li>See your upcoming and past appointments</li>
+                <li>View your lab results and body measurements</li>
+                <li>Complete health surveys about how you are feeling</li>
+                <li>Ask Vik, an automated assistant, questions about liver health and your own records</li>
+                <li>Find educational resources about cirrhosis</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Important</h2>
+            <p>CarePal does not replace your care team and does not provide medical advice, diagnosis, or treatment. In an emergency, call 911.</p>
+        </section>
+
+        <section class="section">
+            <h2>Who Makes CarePal</h2>
+            <p>CarePal was developed at Indiana University Indianapolis.</p>
+            <p>Questions? Contact <a href="mailto:saptpurk@iu.edu">saptpurk@iu.edu</a> or visit our <a href="carepal-support.html">support page</a>.</p>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 CarePal. All rights reserved.</p>
+        <p><a href="carepal-privacy-policy.html">Privacy Policy</a> · <a href="carepal-support.html">Support</a> · <a href="carepal-account-deletion-request.html">Delete Account</a></p>
+    </footer>
+
+</body>
+</html>
