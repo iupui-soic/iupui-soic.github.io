@@ -49,7 +49,7 @@
             width: 200%;
             height: 200%;
             background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
-            
+
         }
 
         @keyframes pulse {
@@ -238,7 +238,7 @@
 
     <main class="container">
         <div class="last-updated">
-            <strong>Last Updated:</strong> October 31, 2026
+            <strong>Last Updated:</strong> November 1, 2026
         </div>
         <section class="section">
             <h2>Introduction</h2>
@@ -251,6 +251,9 @@
             <h3>Account Information</h3>
             <p>When you sign in with Google or Apple, we receive your name, email address, any profile photo, and a unique account identifier. Apple lets you hide your email address from us. If you create an account with your email, we keep your email address, and your password is handled by Firebase Authentication, which does not show it to us.</p>
 
+            <h3>Connecting Your Health Record</h3>
+            <p>To connect your account to your health record, CarePal either matches your verified email address or asks for your medical record number and date of birth. These details are sent to our server to find your record, and we do not save your medical record number or date of birth in your CarePal account. We do keep a record of which account was connected to which health record, how, and when.</p>
+
             <h3>Your Health Records</h3>
             <p>When your account is connected to a health record, CarePal reads your demographics, medications, appointments and visits, lab results and other measurements, diagnoses, reports, and care team details from a health records server. This information is displayed in the app and used to answer your questions to Vik. Records stay on that server, and the app does not save a separate copy of them in your CarePal account. However, Vik's saved replies can include details from your records.</p>
 
@@ -259,14 +262,14 @@
                 <li><strong>Survey answers:</strong> your answers to health surveys, including questions about physical function, mood, anxiety, sleep, itching, and pain</li>
                 <li><strong>Chat messages:</strong> the messages you send to Vik and the replies you receive</li>
                 <li><strong>Health readings:</strong> any readings you choose to enter yourself</li>
-                <li><strong>Medication reminders:</strong> the medicine names and times you set, which are stored only on your device</li>
+                <li><strong>Medication reminders:</strong> the medicine names and times you set, which are stored only on your device. Reminder notifications do not name your medicines or surveys, because they can appear on your lock screen.</li>
             </ul>
 
             <h3>Safety Alerts</h3>
             <p>CarePal automatically checks chat messages for words that may suggest distress or a crisis. When it finds them, it saves an alert in your account containing the matching words, up to the first 200 characters of your message, the date, and a list of when such words appeared in your chats during the past 30 days. <strong>These alerts are not monitored, and no one is notified in real time.</strong> Do not rely on CarePal in an emergency.</p>
 
             <h3>Device Verification</h3>
-            <p>CarePal uses Firebase App Check, with Google Play Integrity on Android and Apple DeviceCheck on iOS, to confirm that requests come from a genuine copy of the app.</p>
+            <p>CarePal uses Firebase App Check, with Google Play Integrity on Android and Apple DeviceCheck on iOS, to confirm that requests come from a genuine copy of the app. Firebase services also process your device's IP address and identifiers for your installation of the app, to keep the service secure and prevent abuse.</p>
 
             <h3>What We Do Not Collect</h3>
             <p>CarePal does not use advertising, analytics, or tracking tools, and it does not collect your location or access your contacts, camera, or microphone.</p>
@@ -299,7 +302,7 @@
                 <li><strong>Cloud Firestore:</strong> stores your chats, surveys, readings, and safety alerts in the United States, in an area of the database restricted to your account</li>
                 <li><strong>In transit:</strong> data sent between the app and our services uses encrypted connections</li>
                 <li><strong>Technical logs:</strong> our server functions keep technical logs in Google Cloud for troubleshooting, and these can include error details</li>
-                <li><strong>On your device:</strong> reminders, in-progress survey answers, and recently viewed account data are kept in the app's private storage and are not separately encrypted by CarePal, so please protect your phone with a passcode</li>
+                <li><strong>On your device:</strong> reminders and in-progress survey answers are kept in encrypted storage. Recently viewed account data is kept in the app's private storage, which CarePal does not separately encrypt, so please protect your phone with a passcode. CarePal keeps all of this out of device backups and removes it when you log out.</li>
             </ul>
             <p>No system is completely secure, and we cannot guarantee absolute security.</p>
         </section>
@@ -307,7 +310,7 @@
         <section class="section">
             <h2>Data Retention</h2>
             <p>We keep your chats, surveys, readings, safety alerts, and profile for as long as your CarePal account exists, so that you can return to them.</p>
-            <p>When you delete your account in the app (Profile, then Delete My Account), or ask us to through our <a href="carepal-account-deletion-request.html">account deletion request page</a>, we delete your account and the data linked to it from our systems within 30 days. Uninstalling the app removes the data stored on your device, but it does not delete your account. Answers that have already been sent to a research study database may be kept as required by that study's approved protocol.</p>
+            <p>When you delete your account in the app (Profile, then Delete My Account), or ask us to through our <a href="carepal-account-deletion-request.html">account deletion request page</a>, we delete your account and the data linked to it from our systems within 30 days. We keep the record of when the account was connected to a health record as a security record. Logging out removes the data stored on your device, but it does not delete your account. Uninstalling the app does not delete your account either, and on an iPhone, encrypted items can stay in the phone's secure keychain after uninstalling, until CarePal clears them the next time it is installed. To remove them right away, log out before you uninstall. Answers that have already been sent to a research study database may be kept as required by that study's approved protocol.</p>
         </section>
 
         <section class="section">
