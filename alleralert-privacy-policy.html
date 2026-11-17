@@ -238,7 +238,7 @@
 
     <main class="container">
         <div class="last-updated">
-            <strong>Last Updated:</strong> October 14, 2026
+            <strong>Last Updated:</strong> November 17, 2026
         </div>
 
         <section class="section">
@@ -279,6 +279,9 @@
 
                 <h3>Voice Data</h3>
             <p>When using voice-enabled symptom tracking, your voice input is processed to extract symptoms, triggers, and medication information. Voice recordings are processed in real-time and are not stored permanently.</p>
+                <h3>Diary Analysis</h3>
+            <p>As part of the AllerAlert research study, approved by the Indiana University Institutional Review Board (protocol #23616) and described in the study's informed consent, the text of each diary note you save is analyzed to identify symptoms, triggers, medications, places, and times. The note is sent over an encrypted connection to the study's own server on Google Cloud in the United States, run by the AllerAlert study team at Indiana University, where an open-source text analysis model reads it. The server does not store or log the text of your notes; Google Cloud's standard request logs record only technical details such as the time, status, and network address of each request. The results are saved with your diary entry. Your notes are not shared with any third party and are not used to train any model.</p>
+            <p>Diary analysis is on by default. You can turn it off at any time in the app (Me &rarr; Diary Analysis). After that, the notes you save are analyzed only on your device; results already saved with earlier entries stay with them until your account is deleted.</p>
         </section>
 
         <section class="section">
@@ -288,6 +291,7 @@
                 <li>Provide and maintain the AllerAlert service</li>
                 <li>Generate personalized health insights and trend visualizations</li>
                 <li>Analyze environmental patterns and identify triggers</li>
+                <li>Identify symptoms, triggers, and medications in your diary notes (see Diary Analysis)</li>
                 <li>Improve our app's features and user experience</li>
                 <li>Send important notifications about your health data</li>
                 <li>Comply with legal obligations</li>
@@ -323,6 +327,7 @@
             <p>AllerAlert integrates with the following third-party services:</p>
             <ul>
                 <li><strong>Firebase (Google):</strong> Authentication, data storage, and crash reporting (Crashlytics)</li>
+                <li><strong>Google Cloud (Cloud Run):</strong> hosts the study's diary analysis server described under Diary Analysis; the text of your notes is not stored there</li>
                 <li><strong>Open-Meteo:</strong> Weather forecasts and outdoor air quality, requested for your approximate location without any account information</li>
                 <li><strong>Apple Health and Health Connect:</strong> the source of the health measures described above, read only with your permission</li>
             </ul>
